@@ -1,0 +1,11 @@
+header {
+    border-bottom-style: solid;
+    border-bottom-color: black;
+    border-bottom-width: 2px;
+}
+
+footer {
+    border-top-style: solid;
+    border-top-color: gray;
+    border-top-width: 2px;
+}
