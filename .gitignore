@@ -1,0 +1,15 @@
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+
+# Java output directories
+target
+
+#Local-only resources
+local
+
+# Web directories
+node_modules
+bower_components
