@@ -20,14 +20,21 @@
         </h1>
     </header>
 
-    <nav class="container">
-        <div class="row">
-            <div class="col-8">alphabet</div>
-            <div class="col-4">search box</div>
+    <nav class="container-fluid">
+        <div class="row pt-2 pb-2">
+            <div class="col-8" id="alphabet-container"></div>
+            <div class="col-4">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Enter search keywords" aria-label="Enter search keywords" aria-describedby="button-addon2">
+                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+                  </div>
+            </div>
         </div>
     </nav>
 
-    <section class="position-absolute start-50 translate-middle-x">My collection content</section>
+    <section class="text-center">
+        <span>My collection content</span>
+    </section>
 
     <footer class="position-absolute bottom-0 w-100 text-center">
         <span>Created by Kate</span>
