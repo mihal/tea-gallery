@@ -6,9 +6,9 @@
 function generateAlphabet() {
     let alphabet = [];
 
-    var start = 'A'.charCodeAt(0);
-    var last  = 'Z'.charCodeAt(0);
-    for (var i = start; i <= last; ++i) {
+    const start = 'A'.charCodeAt(0);
+    const last  = 'Z'.charCodeAt(0);
+    for (let i = start; i <= last; ++i) {
         alphabet.push(String.fromCharCode(i));
     }
 
@@ -24,12 +24,7 @@ function generateAlphabet() {
 function createLetterButton(text) {
     const button = document.createElement("button");
 
-    // TODO 1. Create element
-    //      2. Add classes btn, btn-light and starting-letter-criteria
-    //      3. Set button type as button
-    //      3. Add the text param as a text
-
-    button.classList.add("btn", "btn-light", "starting-letter-criteria");
+    button.classList.add("btn", "btn-light", "starting-letter-criteria", "m-1");
     button.type = "button";
     button.innerText = text;
 
@@ -40,10 +35,6 @@ function createLetterButton(text) {
  * Initialize container by generating and appending alphabet criteria buttons.
  */
 function initAlphabetContainer() {
-    // TODO 1. Call #generateAlphabet
-    //      2. For each element generate a letter button by calling #createLetterButton
-    //      3. Append created buttons into #alphabet-container
-    //      4. Create another letter button with text 'Other' and append it also into #alphabet-container
 
     let alphabet = generateAlphabet();
     const alphabetContainer = document.getElementById("alphabet-container");
@@ -56,5 +47,4 @@ function initAlphabetContainer() {
 
 }
 
-// TODO Call here #initAlphabetContainer
 initAlphabetContainer();
