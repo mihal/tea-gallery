@@ -3,3 +3,12 @@
     border-bottom-width: black;
     border-bottom-width: 2px;
 }
+
+.company-card{
+    width: 7em;
+    height: 7em;
+}
+
+.company-card .company-name {
+    margin-top: 35%;
+}

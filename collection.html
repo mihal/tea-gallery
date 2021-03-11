@@ -36,7 +36,7 @@
         </div>
     </nav>
 
-    <section class="container-fluid">
+    <section class="container-fluid p-3">
         <div class="row">
             <div class="col">
                 <nav aria-label="breadcrumb">
@@ -47,16 +47,58 @@
                 </nav>
             </div>
         </div>
-        <div class="row">
-            <div class="col text-center">
-                <span>My collection content</span>
+        <div class="row row-cols-auto gy-3">
+            <div class="col">
+                <div class="card company-card text-center">
+                    <div class="card-body">
+                      <p class="card-text company-name">Ahmad</p>
+                    </div>
+                  </div>
+            </div>
+            <div class="col">
+                <div class="card company-card text-center">
+                    <div class="card-body">
+                      <p class="card-text company-name">Dilmah</p>
+                    </div>
+                  </div>
+            </div>
+            <div class="col">
+                <div class="card company-card text-center">
+                    <div class="card-body">
+                      <p class="card-text company-name">Harmonie</p>
+                    </div>
+                  </div>
+            </div>
+            <div class="col">
+                <div class="card company-card text-center">
+                    <div class="card-body">
+                      <p class="card-text company-name">Puka</p>
+                    </div>
+                  </div>
+            </div>
+            <div class="col">
+                <div class="card company-card text-center">
+                    <div class="card-body">
+                      <p class="card-text company-name">Teekanne</p>
+                    </div>
+                  </div>
             </div>
         </div>
     </section>
 
-    <footer class="position-absolute bottom-0 w-100 text-center">
+    <footer class="footer text-center">
         <span>Created by Kate</span>
     </footer>
+
+    <div class="invisible">
+        <div class="col" id="company-template">
+            <div class="card company-card text-center">
+                <div class="card-body">
+                  <p class="card-text company-name"></p>
+                </div>
+              </div>
+        </div>
+    </div>
 
     <script src="js/collection.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
