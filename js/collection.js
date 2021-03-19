@@ -1,13 +1,4 @@
-// TODO A: 1. Read 'Read & delete TODO'
-//         2. Create here class CollectionPageOperator
-//         3. Create private method init
-//         4. Move function initAlphabetContainer inside a CollectionPageOperator (as a private method)
-//         5. Call initAlphabetContainer from init method
-//         6. Expose method named init, which will be calling the private init method
-
-// TODO Read & delete: This is 'old' JS definition of the class. Objects of a class can be created with new, e.g. new AlphabetProvider().
 function AlphabetProvider() {
-    // TODO Read & delete: This is a private method (function) of the class. It will not be accessible outside this class implicitly.
     /**
      * Generate alphabet
      *
@@ -41,28 +32,36 @@ function AlphabetProvider() {
         return button;
     }
 
-    // TODO Read & delete: Here you are defining which methods (functions) should be public, i.e. visible outside this class.
-    //      This is a definition of the API of this class. The class AlphabetProvider exposes two methods named: generateAlphabet and createLetterButton
-    //      In this case method name is identical with the function name.
     return {
         generateAlphabet: generateAlphabet,
         createLetterButton: createLetterButton
     }
 }
 
-/**
- * Initialize container by generating and appending alphabet criteria buttons.
- */
-function initAlphabetContainer() {
-    // TODO B: We have a problem here. generateAlphabet and createLetterButton are not available. How we can fix it?
-    let alphabet = generateAlphabet();
-    const alphabetContainer = document.getElementById("alphabet-container");
+function CollectionPageOperator() {
 
-    alphabet.forEach(element => {
-        alphabetContainer.append(createLetterButton(element));
-    });
+    function init() {
+        initAlphabetContainer();
+    }
 
-    alphabetContainer.append(createLetterButton("Other"));
+    /**
+     * Initialize container by generating and appending alphabet criteria buttons.
+     */
+    function initAlphabetContainer() {
+        const alphabetProvider = new AlphabetProvider();
+        let alphabet = alphabetProvider.generateAlphabet();
+        const alphabetContainer = document.getElementById("alphabet-container");
+
+        alphabet.forEach(element => {
+            alphabetContainer.append(alphabetProvider.createLetterButton(element));
+        });
+
+        alphabetContainer.append(alphabetProvider.createLetterButton("Other"));
+    }
+
+    return {
+        init: init
+    }
 }
 
-// TODO C: Create an instance (object) of the class CollectionPageOperator and call init
+new CollectionPageOperator().init();
