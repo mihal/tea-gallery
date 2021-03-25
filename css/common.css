@@ -1,8 +1,17 @@
 html,
 body {
     max-width: 100%;
-    overflow-x: hidden;
-    padding: 0.5em;
+    height: 100%;
+    position: relative;
+    margin: 0 0.5em 0;
+}
+
+#page-container {
+    min-height: 100vh;
+    overflow: hidden;
+    display: block;
+    position: relative;
+    padding-bottom: 0.5em;
 }
 
 header {
@@ -15,4 +24,7 @@ footer {
     border-top-style: solid;
     border-top-color: gray;
     border-top-width: 2px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
