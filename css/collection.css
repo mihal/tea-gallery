@@ -1,7 +1,6 @@
 #searchNav {
     border-bottom-style: solid;
-    /* TODO This does not look correct, does it?  */
-    border-bottom-width: black;
+    border-bottom-color: black;
     border-bottom-width: 2px;
 }
 

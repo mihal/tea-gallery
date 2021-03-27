@@ -5,9 +5,8 @@ function CompaniesHandler() {
          *
          * @return {String[]} available company names
          */
-        loadItems: function () {
-            // TODO Specify here a couple of companies in form as the JSDoc is telling you.
-            return [];
+        loadItems: function() {
+            return ["Teekanne", "Pickwick", "Pukka"];
         },
         /**
          * Create HTML element for visualization of the company.
@@ -15,11 +14,11 @@ function CompaniesHandler() {
          * @param companyData input data, the company HTML element will be created from
          * @return {Node} HTML representation of the company
          */
-        createElementFor: function (companyData) {
-            // TODO 1. Load the template for the company card and make a clone
-            //      2. Set company name into the card from the companyData
-            //      3. return the company card
-            return null;
+        createElementFor: function(companyData) {
+            let companyCard = document.getElementById('company-template').cloneNode(true);
+            companyCard.querySelector('.company-name').innerText = companyData;
+
+            return companyCard;
         }
     }
 }

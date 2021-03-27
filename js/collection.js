@@ -40,17 +40,20 @@ function AlphabetProvider() {
 
 function CollectionPageOperator() {
 
-    // TODO Create here a property called 'handler' and assign into a new instance of the CompaniesHandler class
+    let handler = new CompaniesHandler();
 
     function init() {
         initAlphabetContainer();
-        // TODO call initItemsView
+        initItemsView();
     }
 
     function initItemsView() {
-        // TODO 1. Call handler#loadItems
-        //      2. For each item call handler#createElementFor
-        //      3. Result append into the 'items-view'
+        const companyNames = handler.loadItems();
+        const itemsView = document.getElementById('items-view');
+
+        companyNames.forEach(companyName => {
+            itemsView.append(handler.createElementFor(companyName));
+        });
     }
 
     /**
