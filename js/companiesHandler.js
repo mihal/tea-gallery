@@ -16,6 +16,7 @@ function CompaniesHandler() {
          */
         createElementFor: function(companyData) {
             let companyCard = document.getElementById('company-template').cloneNode(true);
+            companyCard.removeAttribute('id');
             companyCard.querySelector('.company-name').innerText = companyData;
 
             return companyCard;
