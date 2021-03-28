@@ -40,8 +40,20 @@ function AlphabetProvider() {
 
 function CollectionPageOperator() {
 
+    let handler = new CompaniesHandler();
+
     function init() {
         initAlphabetContainer();
+        initItemsView();
+    }
+
+    function initItemsView() {
+        const companyNames = handler.loadItems();
+        const itemsView = document.getElementById('items-view');
+
+        companyNames.forEach(companyName => {
+            itemsView.append(handler.createElementFor(companyName));
+        });
     }
 
     /**

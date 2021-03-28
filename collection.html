@@ -16,90 +16,61 @@
 </head>
 
 <body>
-    <header>
-        <h1>
-            <a class="d-block" href="index.html">Teabag Gallery</a>
-        </h1>
-    </header>
 
-    <nav class="container-fluid" id="searchNav">
-        <div class="row pt-2 pb-2">
-            <div class="col-9" id="alphabet-container"></div>
-            <div class="col">
-                <div class="input-group m-1">
-                    <input type="text" class="form-control" placeholder="Enter search keywords" aria-label="Enter search keywords" aria-describedby="button-addon2">
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <div id="page-container">
+        <header>
+            <h1>
+                <a class="d-block" href="index.html">Teabag Gallery</a>
+            </h1>
+        </header>
 
-    <section class="container-fluid p-3">
-        <div class="row">
-            <div class="col">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item active" aria-current="page"><a href="collection.html">Companies</a>
-                        </li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-        <div class="row row-cols-auto gy-3">
-            <div class="col">
-                <div class="card company-card text-center">
-                    <div class="card-body">
-                        <p class="card-text company-name">Ahmad</p>
+        <nav class="container-fluid" id="searchNav">
+            <div class="row pt-2 pb-2">
+                <div class="col-9" id="alphabet-container"></div>
+                <div class="col">
+                    <div class="input-group m-1">
+                        <input type="text" class="form-control" placeholder="Enter search keywords" aria-label="Enter search keywords" aria-describedby="button-addon2">
+                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="card company-card text-center">
-                    <div class="card-body">
-                        <p class="card-text company-name">Dilmah</p>
-                    </div>
+        </nav>
+
+        <section class="container-fluid p-3">
+            <div class="row">
+                <div class="col">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item active" aria-current="page"><a href="collection.html">Companies</a>
+                            </li>
+                        </ol>
+                    </nav>
                 </div>
             </div>
-            <div class="col">
-                <div class="card company-card text-center">
-                    <div class="card-body">
-                        <p class="card-text company-name">Harmonie</p>
-                    </div>
-                </div>
+            <div id="items-view" class="row row-cols-auto gy-3">
+
             </div>
-            <div class="col">
+        </section>
+
+        <footer class="text-center">
+            <span>Created by Kate</span>
+        </footer>
+
+        <div class="invisible">
+            <div class="col" id="company-template">
                 <div class="card company-card text-center">
                     <div class="card-body">
-                        <p class="card-text company-name">Puka</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card company-card text-center">
-                    <div class="card-body">
-                        <p class="card-text company-name">Teekanne</p>
+                        <p class="card-text company-name"></p>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <footer class="footer text-center">
-        <span>Created by Kate</span>
-    </footer>
-
-    <div class="invisible">
-        <div class="col" id="company-template">
-            <div class="card company-card text-center">
-                <div class="card-body">
-                    <p class="card-text company-name"></p>
-                </div>
-            </div>
-        </div>
+        <script src="js/companiesHandler.js"></script>
+        <script src="js/collection.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
     </div>
 
-    <script src="js/collection.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 </body>
 
 </html>
