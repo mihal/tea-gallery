@@ -9,7 +9,10 @@
     height: 7em;
 }
 
-/* TODO Make the company card change the background color to #d8eefc and cursor to pointer on hover. Add the relevant style here.*/
+.company-card:hover {
+    background-color: #d8eefc;
+    cursor: pointer;
+}
 
 .company-card .company-name {
     margin-top: 35%;

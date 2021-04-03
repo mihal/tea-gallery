@@ -46,16 +46,16 @@ function ViewSpinnerOperator() {
     }
 
     return {
-        show: function (viewContainer) {
-            // TODO 1. Find template by id. Value is stored in CONST.TEMPLATE.
-            //      2. Create a clone
-            //      3. Change id to active one. (CONST.ACTIVE)
-            //      4. Set the cloned element into the viewContainer.
-            //      5. Target state is that the spinner is solo in the view section. No companies are displayed.
+        show: function(viewContainer) {
+            let template = document.getElementById(CONST.TEMPLATE);
+            let spinner = template.cloneNode(true);
+            spinner.setAttribute('id', CONST.ACTIVE);
+            viewContainer.innerHtml = "";
+            viewContainer.append(spinner);
         },
-        hide: function () {
-            // TODO 1. Find element by the id. Value is stored in CONST.ACTIVE.
-            //      2. Remove the element.
+        hide: function() {
+            let activeSpinner = document.getElementById(CONST.ACTIVE);
+            activeSpinner.remove();
         }
     }
 }
@@ -67,7 +67,6 @@ function CollectionPageOperator() {
     function init() {
         initAlphabetContainer();
         initItemsView();
-
         registerCompanyCardClickEvents();
     }
 
@@ -79,18 +78,20 @@ function CollectionPageOperator() {
         let alphabet = alphabetProvider.generateAlphabet();
         const alphabetContainer = document.getElementById("alphabet-container");
 
-        alphabet.forEach(element => {
-            alphabetContainer.append(alphabetProvider.createLetterButton(element));
-        });
+        alphabet.forEach(element => { alphabetContainer.append(alphabetProvider.createLetterButton(element)); });
 
         alphabetContainer.append(alphabetProvider.createLetterButton("Other"));
     }
 
     function initItemsView() {
-        // TODO Before you call loadItems, show loading spinner. Use ViewSpinnerOperator class and itemsView. (Rearrangement needed)
-        const companyNames = handler.loadItems();
-        // TODO After the loading is finished. Hide the spinner and start rendering.
         const itemsView = document.getElementById('items-view');
+
+        const viewSpinnerOperator = new ViewSpinnerOperator();
+        viewSpinnerOperator.show(itemsView);
+
+        const companyNames = handler.loadItems();
+
+        viewSpinnerOperator.hide();
 
         companyNames.forEach(companyName => {
             const itemContainer = document.createElement('div');
@@ -102,16 +103,20 @@ function CollectionPageOperator() {
     }
 
     function registerCompanyCardClickEvents() {
-        // TODO Add click event handler on all .company-card elements. Callback function is handleCompanyCardClicked
+        document.querySelectorAll('.company-card').forEach(element => { element.addEventListener("click", handleCompanyCardClicked) });
     }
 
     function handleCompanyCardClicked(event) {
-        // TODO 1. Retrieve a clicked element from the event. You either google or investigate content of the event object printing it by console.log(event)
-        //      2. Find the nearest (closest) ancestor mark as .company-card. We need to cover case when you click on .company-name or other children.
-        //      3. Retrieve from the company-card element the name of the company. (It is stored inside a data attribute set in companiesHandler.js)
-        //      4. Find a currently active breadcrumb and remove the active class. (Find by a selector of two classes)
-        //      5. Find #company-breadcrumb-item. Set the company name, mark with active class and remove invisible.
-        //      6. Show view spinner.
+        let clickedElement = event.currentTarget;
+        let companyName = clickedElement.getAttribute('data-name');
+
+        let activeBreadcrumb = document.querySelector('.breadcrumb-item.active');
+        activeBreadcrumb.classList.remove("active");
+
+        let companyBreadcrumb = document.getElementById('company-breadcrumb-item');
+        companyBreadcrumb.innerText = companyName;
+        companyBreadcrumb.classList.add("active");
+        companyBreadcrumb.classList.remove("invisible");
     }
 
     return {
