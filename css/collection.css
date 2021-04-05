@@ -17,3 +17,11 @@
 .company-card .company-name {
     margin-top: 35%;
 }
+
+.card.tea-collectible-card {
+    width: 12em;
+}
+
+.tea-collectible-card img {
+    height: 7em;
+}

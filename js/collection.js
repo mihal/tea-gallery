@@ -46,14 +46,15 @@ function ViewSpinnerOperator() {
     }
 
     return {
-        show: function(viewContainer) {
+        show: function (viewContainer) {
             let template = document.getElementById(CONST.TEMPLATE);
             let spinner = template.cloneNode(true);
             spinner.setAttribute('id', CONST.ACTIVE);
+            // TODO: innerHtml is not a property. innerHTML is.
             viewContainer.innerHtml = "";
             viewContainer.append(spinner);
         },
-        hide: function() {
+        hide: function () {
             let activeSpinner = document.getElementById(CONST.ACTIVE);
             activeSpinner.remove();
         }
@@ -78,7 +79,9 @@ function CollectionPageOperator() {
         let alphabet = alphabetProvider.generateAlphabet();
         const alphabetContainer = document.getElementById("alphabet-container");
 
-        alphabet.forEach(element => { alphabetContainer.append(alphabetProvider.createLetterButton(element)); });
+        alphabet.forEach(element => {
+            alphabetContainer.append(alphabetProvider.createLetterButton(element));
+        });
 
         alphabetContainer.append(alphabetProvider.createLetterButton("Other"));
     }
@@ -103,7 +106,9 @@ function CollectionPageOperator() {
     }
 
     function registerCompanyCardClickEvents() {
-        document.querySelectorAll('.company-card').forEach(element => { element.addEventListener("click", handleCompanyCardClicked) });
+        document.querySelectorAll('.company-card').forEach(element => {
+            element.addEventListener("click", handleCompanyCardClicked)
+        });
     }
 
     function handleCompanyCardClicked(event) {
@@ -117,6 +122,9 @@ function CollectionPageOperator() {
         companyBreadcrumb.innerText = companyName;
         companyBreadcrumb.classList.add("active");
         companyBreadcrumb.classList.remove("invisible");
+
+        // TODO 1. Set a new instance of the TeaCollectiblesHandler to the handler property. Note: Constructor requires one parameter. See TeaCollectiblesHandler:1
+        //      2. Call initItemsView
     }
 
     return {
