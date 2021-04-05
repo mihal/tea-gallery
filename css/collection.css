@@ -9,6 +9,11 @@
     height: 7em;
 }
 
+.company-card:hover {
+    background-color: #d8eefc;
+    cursor: pointer;
+}
+
 .company-card .company-name {
     margin-top: 35%;
 }

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/collection.css">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
     <title>Collection</title>
 </head>
@@ -41,7 +41,10 @@
                 <div class="col">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item active" aria-current="page"><a href="collection.html">Companies</a>
+                            <li class="breadcrumb-item active" aria-current="page">
+                                <a href="collection.html">Companies</a>
+                            </li>
+                            <li id="company-breadcrumb-item" class="breadcrumb-item invisible" aria-current="page">
                             </li>
                         </ol>
                     </nav>
@@ -57,18 +60,22 @@
         </footer>
 
         <div class="invisible">
-            <div class="col" id="company-template">
-                <div class="card company-card text-center">
-                    <div class="card-body">
-                        <p class="card-text company-name"></p>
-                    </div>
+            <div class="card company-card text-center" id="company-template">
+                <div class="card-body">
+                    <p class="card-text company-name"></p>
+                </div>
+            </div>
+
+            <div class="col-12 text-center" id="items-view-spinner-template">
+                <div class="spinner-border m-5" role="status">
+                    <span class="visually-hidden">Loading...</span>
                 </div>
             </div>
         </div>
 
         <script src="js/companiesHandler.js"></script>
         <script src="js/collection.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     </div>
 
 </body>

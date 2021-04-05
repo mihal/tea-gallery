@@ -38,6 +38,28 @@ function AlphabetProvider() {
     }
 }
 
+function ViewSpinnerOperator() {
+
+    const CONST = {
+        TEMPLATE: 'items-view-spinner-template',
+        ACTIVE: 'items-view-spinner'
+    }
+
+    return {
+        show: function(viewContainer) {
+            let template = document.getElementById(CONST.TEMPLATE);
+            let spinner = template.cloneNode(true);
+            spinner.setAttribute('id', CONST.ACTIVE);
+            viewContainer.innerHtml = "";
+            viewContainer.append(spinner);
+        },
+        hide: function() {
+            let activeSpinner = document.getElementById(CONST.ACTIVE);
+            activeSpinner.remove();
+        }
+    }
+}
+
 function CollectionPageOperator() {
 
     let handler = new CompaniesHandler();
@@ -45,15 +67,7 @@ function CollectionPageOperator() {
     function init() {
         initAlphabetContainer();
         initItemsView();
-    }
-
-    function initItemsView() {
-        const companyNames = handler.loadItems();
-        const itemsView = document.getElementById('items-view');
-
-        companyNames.forEach(companyName => {
-            itemsView.append(handler.createElementFor(companyName));
-        });
+        registerCompanyCardClickEvents();
     }
 
     /**
@@ -64,11 +78,45 @@ function CollectionPageOperator() {
         let alphabet = alphabetProvider.generateAlphabet();
         const alphabetContainer = document.getElementById("alphabet-container");
 
-        alphabet.forEach(element => {
-            alphabetContainer.append(alphabetProvider.createLetterButton(element));
-        });
+        alphabet.forEach(element => { alphabetContainer.append(alphabetProvider.createLetterButton(element)); });
 
         alphabetContainer.append(alphabetProvider.createLetterButton("Other"));
+    }
+
+    function initItemsView() {
+        const itemsView = document.getElementById('items-view');
+
+        const viewSpinnerOperator = new ViewSpinnerOperator();
+        viewSpinnerOperator.show(itemsView);
+
+        const companyNames = handler.loadItems();
+
+        viewSpinnerOperator.hide();
+
+        companyNames.forEach(companyName => {
+            const itemContainer = document.createElement('div');
+            itemContainer.classList.add('col');
+            itemContainer.append(handler.createElementFor(companyName));
+
+            itemsView.append(itemContainer);
+        });
+    }
+
+    function registerCompanyCardClickEvents() {
+        document.querySelectorAll('.company-card').forEach(element => { element.addEventListener("click", handleCompanyCardClicked) });
+    }
+
+    function handleCompanyCardClicked(event) {
+        let clickedElement = event.currentTarget;
+        let companyName = clickedElement.getAttribute('data-name');
+
+        let activeBreadcrumb = document.querySelector('.breadcrumb-item.active');
+        activeBreadcrumb.classList.remove("active");
+
+        let companyBreadcrumb = document.getElementById('company-breadcrumb-item');
+        companyBreadcrumb.innerText = companyName;
+        companyBreadcrumb.classList.add("active");
+        companyBreadcrumb.classList.remove("invisible");
     }
 
     return {
