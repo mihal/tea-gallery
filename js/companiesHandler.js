@@ -18,6 +18,7 @@ function CompaniesHandler() {
             let companyCard = document.getElementById('company-template').cloneNode(true);
 
             companyCard.removeAttribute('id');
+            companyCard.dataset.name = companyData;
             companyCard.setAttribute('data-name', companyData);
             companyCard.querySelector('.company-name').innerText = companyData;
 

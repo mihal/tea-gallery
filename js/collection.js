@@ -50,7 +50,7 @@ function ViewSpinnerOperator() {
             let template = document.getElementById(CONST.TEMPLATE);
             let spinner = template.cloneNode(true);
             spinner.setAttribute('id', CONST.ACTIVE);
-            viewContainer.innerHtml = "";
+            viewContainer.innerHTML = "";
             viewContainer.append(spinner);
         },
         hide: function() {
@@ -78,7 +78,9 @@ function CollectionPageOperator() {
         let alphabet = alphabetProvider.generateAlphabet();
         const alphabetContainer = document.getElementById("alphabet-container");
 
-        alphabet.forEach(element => { alphabetContainer.append(alphabetProvider.createLetterButton(element)); });
+        alphabet.forEach(element => {
+            alphabetContainer.append(alphabetProvider.createLetterButton(element));
+        });
 
         alphabetContainer.append(alphabetProvider.createLetterButton("Other"));
     }
@@ -103,7 +105,9 @@ function CollectionPageOperator() {
     }
 
     function registerCompanyCardClickEvents() {
-        document.querySelectorAll('.company-card').forEach(element => { element.addEventListener("click", handleCompanyCardClicked) });
+        document.querySelectorAll('.company-card').forEach(element => {
+            element.addEventListener("click", handleCompanyCardClicked)
+        });
     }
 
     function handleCompanyCardClicked(event) {
@@ -117,6 +121,9 @@ function CollectionPageOperator() {
         companyBreadcrumb.innerText = companyName;
         companyBreadcrumb.classList.add("active");
         companyBreadcrumb.classList.remove("invisible");
+
+        handler = new TeaCollectiblesHandler(companyName);
+        initItemsView();
     }
 
     return {
