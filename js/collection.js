@@ -46,15 +46,14 @@ function ViewSpinnerOperator() {
     }
 
     return {
-        show: function (viewContainer) {
+        show: function(viewContainer) {
             let template = document.getElementById(CONST.TEMPLATE);
             let spinner = template.cloneNode(true);
             spinner.setAttribute('id', CONST.ACTIVE);
-            // TODO: innerHtml is not a property. innerHTML is.
-            viewContainer.innerHtml = "";
+            viewContainer.innerHTML = "";
             viewContainer.append(spinner);
         },
-        hide: function () {
+        hide: function() {
             let activeSpinner = document.getElementById(CONST.ACTIVE);
             activeSpinner.remove();
         }
@@ -123,8 +122,8 @@ function CollectionPageOperator() {
         companyBreadcrumb.classList.add("active");
         companyBreadcrumb.classList.remove("invisible");
 
-        // TODO 1. Set a new instance of the TeaCollectiblesHandler to the handler property. Note: Constructor requires one parameter. See TeaCollectiblesHandler:1
-        //      2. Call initItemsView
+        handler = new TeaCollectiblesHandler(companyName);
+        initItemsView();
     }
 
     return {

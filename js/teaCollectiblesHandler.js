@@ -5,9 +5,14 @@ function TeaCollectiblesHandler(teaCompany) {
          *
          * @return {String[]} collected teas for the company
          */
-        loadItems: function () {
-            // TODO Return here a couple of teas for Teekanne and Pukka. For Pickwick return empty array.
-            return [];
+        loadItems: function() {
+            if (teaCompany == "Teekanne") {
+                return ["Green Tea Grapefruit", "Ginger & Orange", "Imunita"];
+            } else if (teaCompany == "Pukka") {
+                return ["Fresh Start"]
+            } else {
+                return [];
+            }
         },
         /**
          * Create HTML element for visualization of the tea collectible.
@@ -15,14 +20,18 @@ function TeaCollectiblesHandler(teaCompany) {
          * @param collectibleData input data, the collected tea HTML element will be created from
          * @return {Node} HTML representation of the collected tea
          */
-        createElementFor: function (collectibleData) {
-            // TODO 1. Find template by id (tea-collectible-template). Make clone
-            //      2. Remove id attribute
-            //      3. Find img element inside the cloned element.
-            //      4. Set image src attribute to https://5.imimg.com/data5/MZ/ZA/LZ/SELLER-2985372/assam-green-tea-bag-500x500.jpg
-            //      5. Set image alt as "<company-name> - <tea-name>"
-            //      6. Set tea name into the .cord-title
-            //      7. Set company name into the .card-subtitle
+        createElementFor: function(collectibleData) {
+            let teaCollectible = document.getElementById('tea-collectible-template').cloneNode(true);
+            teaCollectible.removeAttribute('id');
+
+            let image = teaCollectible.querySelector('img');
+            image.setAttribute('src', "https://5.imimg.com/data5/MZ/ZA/LZ/SELLER-2985372/assam-green-tea-bag-500x500.jpg");
+            image.setAttribute('alt', teaCompany + " - " + collectibleData);
+
+            teaCollectible.querySelector('.card-title').innerHTML = collectibleData;
+            teaCollectible.querySelector('.card-subtitle').innerHTML = teaCompany;
+
+            return teaCollectible;
         }
     }
 }
